@@ -15,14 +15,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         rsync \
         software-properties-common \
         unzip \
-		openssh-server \
+	openssh-server \
         && \
-		apt-get clean && \
-		rm -rf /var/lib/apt/lists/*
+	apt-get clean && \
+	rm -rf /var/lib/apt/lists/*
 RUN echo 'root:rootroot' |chpasswd  
 RUN sed -ri 's/^PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config  
 RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config 
-RUN service ssh start
+#RUN service ssh start
 RUN curl -O https://bootstrap.pypa.io/get-pip.py && \
     python get-pip.py && \
     rm get-pip.py
@@ -70,4 +70,4 @@ EXPOSE 8888
 EXPOSE 22 
 
 WORKDIR "/notebooks"
-CMD ["/usr/sbin/sshd", "-D"] 
+CMD [service ssh start, "-D"] 
