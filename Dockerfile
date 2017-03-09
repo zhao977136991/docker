@@ -53,10 +53,10 @@ RUN pip --no-cache-dir install \
 # RUN ln -s /usr/bin/python3 /usr/bin/python#
 
 # Set up our notebook config.
-COPY jupyter_notebook_config.py /root/.jupyter/
+#COPY jupyter_notebook_config.py /root/.jupyter/
 
 # Copy sample notebooks.
-COPY notebooks /notebooks
+#COPY notebooks /notebooks
 
 # Jupyter has issues with being run directly:
 #   https://github.com/ipython/ipython/issues/7062
@@ -69,5 +69,5 @@ EXPOSE 6006
 EXPOSE 8888
 EXPOSE 22 
 
-WORKDIR "/notebooks"
+#WORKDIR "/notebooks"
 CMD [service ssh start, "-D"] 
