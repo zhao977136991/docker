@@ -69,5 +69,6 @@ EXPOSE 6006
 EXPOSE 8888
 EXPOSE 22 
 
-#WORKDIR "/notebooks"
-CMD [service ssh start, "-D"] 
+WORKDIR "/"
+RUN service ssh start
+
