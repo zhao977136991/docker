@@ -69,6 +69,7 @@ EXPOSE 6006
 EXPOSE 8888
 EXPOSE 22 
 
-WORKDIR "/"
+WORKDIR "/root"
 RUN service ssh start
+CMD ["/bin/bash"]
 
